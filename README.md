@@ -3,7 +3,7 @@
 For Code setup in local env.
 
 1. Create a config folder in the root of the folder.
-2. Create a file with name dev.env and create two fields namely=
+2. Create a folder with name config and a file under config with name dev.env and create two fields namely:
    PORT=
    MONGO_CONNECTION_STRING=
    Note: Value for the mongo_connection_string is provided in the email.
