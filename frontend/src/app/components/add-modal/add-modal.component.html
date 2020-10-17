@@ -1,0 +1,83 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-basic-title">{{title}}</h3>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div *ngIf="dateError" class="alert alert-danger">
+        End date should be Greater than start date
+    </div>
+    <form #addRow="ngForm" (ngSubmit)="addNewRow(addRow.value)">
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="city">City</label>
+
+                <input class="form-control" name="city" required ngModel #city="ngModel" type="text">
+                <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+                    <div *ngIf="city.errors.required">
+                        City is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label for="price">Price</label>
+                <input class="form-control" name="price" required ngModel #price="ngModel" type="Number">
+                <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert alert-danger">
+                    <div *ngIf="price.errors.required">
+                        Price is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="start">Start Date</label>
+                <input class="form-control" name="start_date" required ngModel #start_date="ngModel" type="date"
+                    (change)="checkDate(start_date.value,end_date.value)">
+                <div *ngIf="start_date.invalid && (start_date.dirty || start_date.touched)" class="alert alert-danger">
+                    <div *ngIf="start_date.errors.required">
+                        Start Date is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label for="endd">End Date</label>
+                <input class="form-control" name="end_date" required ngModel
+                    (change)="checkDate(start_date.value,end_date.value)" #end_date="ngModel" type="date">
+                <div *ngIf="end_date.invalid && (end_date.dirty || end_date.touched)" class="alert alert-danger">
+                    <div *ngIf="end_date.errors.required">
+                        End Date is required.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-6">
+                <label for="status">Status</label>
+                <input class="form-control" name="status" required ngModel #status="ngModel" type="text">
+                <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+                    <div *ngIf="status.errors.required">
+                        Status is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label for="color">Color</label>
+                <input class="form-control" name="color" required ngModel #color="ngModel" type="color">
+                <div *ngIf="color.invalid && (color.dirty || color.touched)" class="alert alert-danger">
+                    <div *ngIf="color.errors.required">
+                        Color is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" [disabled]="!addRow.valid || dateError" data-dismiss="modal" (click)="addNewRow(addRow.value)"
+        class="btn btn-default">Savechanges</button>
+</div>

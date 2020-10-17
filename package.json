@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "SMS challenge",
+  "main": "index.js",
+  "scripts": {
+    "start:prod": "nodemon index.js",
+    "start:dev": "env-cmd -f ./config/dev.env nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.9",
+    "mongoose-sequence": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "env-cmd": "^10.1.0"
+  }
+}
